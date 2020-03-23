@@ -4,7 +4,7 @@ import { render, waitFor } from '@testing-library/react';
 import Episodes from './Episodes';
 
 
-const episodes = [
+const mockData = [
   {
     id: 553946,
     url:
@@ -57,6 +57,8 @@ const episodes = [
   }
 ]
 
+
+
 test('renders without crashing when episodes is an empty array', () => {
     render(<Episodes episodes={[]} />);
 })
@@ -64,6 +66,6 @@ test('renders without crashing when episodes is an empty array', () => {
 test('renders movies when including episodes data', ()=> {
     const { getAllByTestId, rerender } = render(<Episodes episodes={[]} />);
 
-    rerender(<Episodes episodes={episodes} />)
+    rerender(<Episodes episodes={mockData} />)
     expect(getAllByTestId('episode')).toHaveLength(2);
 })
